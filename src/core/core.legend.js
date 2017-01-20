@@ -495,7 +495,13 @@ module.exports = function(Chart) {
 		var legend = new Chart.Legend({
 			ctx: chartInstance.chart.ctx,
 			options: legendOpts,
-			chart: chartInstance
+			chart: chartInstance,
+
+			// ILayoutItem parameters for layout service
+			// pick a large number to ensure we are on the outside after any axes
+			weight: 1000,
+			position: legendOpts.position,
+			fullWidth: legendOpts.fullWidth,
 		});
 		chartInstance.legend = legend;
 		Chart.layoutService.addBox(chartInstance, legend);
